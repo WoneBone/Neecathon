@@ -1,13 +1,15 @@
 // Analog pin connected to your sensor
 const int xpin = A4;
 const int ypin = A5;
-const int uppin = 2;
-const int downpin = 3;
-const int rightpin = 4;
-const int leftpin = 5;
+const int uppin = 14;
+const int downpin = 15;
+const int rightpin = 16;
+const int leftpin = 17;
 int* xvector[2];
 int* yvector[2];
 int min, max;
+int def = 1;
+bool temp1, temp2, temp3, temp4;
 
 void setup() {
   // Initialize serial communication at 9600 baud rate
@@ -20,9 +22,6 @@ void setup() {
   pinMode(downpin, OUTPUT); // Set the pin as an output
   pinMode(rightpin, OUTPUT); // Set the pin as an output
   pinMode(leftpin, OUTPUT); // Set the pin as an output
-
-  int def = 1;
-  bool temp1, temp2, temp3, temp4;
 }
 
 void loop() {
@@ -70,24 +69,24 @@ void loop() {
   temp4 = LOW;
 
   if (def % 2 == 0){
-    temp1 = HIGH
+    temp1 = HIGH;
   }
   if (def % 3 == 0){
-    temp1 = HIGH
+    temp1 = HIGH;
   }
   if (def % 5 == 0){
-    temp3 = HIGH
+    temp3 = HIGH;
   }
   if (def % 7 == 0){
-    temp4 = HIGH
+    temp4 = HIGH;
   }
 
-    digitalWrite(rigthpin, temp1);
+    digitalWrite(rightpin, temp1);
     digitalWrite(leftpin, temp2);
     digitalWrite(uppin, temp3);
     digitalWrite(downpin, temp4);
 
   Serial.print("\n\n---\n\n");
 
-  delay(1000); 
+  delay(100); 
 }
